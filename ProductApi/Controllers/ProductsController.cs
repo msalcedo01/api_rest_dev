@@ -17,7 +17,13 @@ namespace ProductAPI.Controllers
             _context = context;
         }
 
-        //Método GET
+        //Método GET list completa
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Product>>> GetAll()
+        {
+            return await _context.Products.ToListAsync();
+        }
+        //Método GET por id
         [HttpGet("{id}")]
         public async Task<ActionResult<Product>> GetById(int id)
         {
